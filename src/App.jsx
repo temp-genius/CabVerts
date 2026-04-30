@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ShieldCheck, CalendarDays, Car, Trash2, ChevronDown, CheckCircle2 } from 'lucide-react'
 import { supabase } from './supabaseClient'
 import cabvertsLogo from './assets/CabVerts_logo2.jpg'
@@ -129,6 +129,20 @@ export default function App() {
       </div>
     </div>
   )
+
+  useEffect(() => {
+    const hash = window.location.hash
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(
+          hash.replace('#', '')
+        )
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        }
+      }, 100)
+    }
+  }, [])
 
   return (
     <>
